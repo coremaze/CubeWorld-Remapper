@@ -14,13 +14,16 @@ def main():
         2) Left (A)
         3) Backward (S)
         4) Right (D)
+        5) Jump (Spacebar)
+        6) Walk, Free Aim (Shift)
+        7) Climb (Ctrl)
         
-        5) Pick Up (E)
-        6) Interact (R)
+        8) Pick Up (E)
+        9) Interact (R)
 
-        7) Use Ability 1 (1)
-        8) Use Ability 2 (2)
-        9) Use Ability 3 (3)
+        10) Use Ability 1 (1)
+        11) Use Ability 2 (2)
+        12) Use Ability 3 (3)
         [Enter] to exit''')
 
         hotKey = input()
@@ -31,7 +34,7 @@ def main():
         except:
             print("You what")
         else:
-            if hotKey not in range(1, 10):
+            if hotKey not in range(1, 13):
                 print("Invalid hotkey")
                 
             else:

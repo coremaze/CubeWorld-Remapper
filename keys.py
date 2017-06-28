@@ -201,6 +201,9 @@ hotKeyLocations = [[0xA629A],#w
                    [0xa6aa4],#a
                    [0xA6678],#s
                    [0xA69D0],#d
+                   [0xA808C, 0xA81A2],#Spacebar
+                   [0x97705, 0x9771A, 0x98260, 0x9A8D5, 0x91C0A], #Shift
+                   [0x977F7], #ctrl
                    [0x969C3, 0x9A99D],#e
                    [0x9676E, 0x9A995],#r
                    [0x91839],#1
