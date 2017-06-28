@@ -17,6 +17,10 @@ def main():
         
         5) Pick Up (E)
         6) Interact (R)
+
+        7) Use Ability 1 (1)
+        8) Use Ability 2 (2)
+        9) Use Ability 3 (3)
         [Enter] to exit''')
 
         hotKey = input()
@@ -27,7 +31,7 @@ def main():
         except:
             print("You what")
         else:
-            if hotKey not in range(1, 7):
+            if hotKey not in range(1, 10):
                 print("Invalid hotkey")
                 
             else:

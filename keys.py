@@ -202,7 +202,11 @@ hotKeyLocations = [[0xA629A],#w
                    [0xA6678],#s
                    [0xA69D0],#d
                    [0x969C3, 0x9A99D],#e
-                   [0x9676E, 0x9A995]#r
+                   [0x9676E, 0x9A995],#r
+                   [0x91839],#1
+                   [0x918F7],#2
+                   [0x919B5]#3
+                   
                    ]
 def GetKeyCode(key):
     if key == '':#User didn't press a key
