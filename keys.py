@@ -197,10 +197,13 @@ CWKeycodes = ['','','','','','','','','','','','','','','','','','','','','','',
 'M3'
 ]
 
-hotKeyLocations = [0xA629A,#w
-                   0xa6aa4,#a
-                   0xA6678,#s
-                   0xA69D0]#d
+hotKeyLocations = [[0xA629A],#w
+                   [0xa6aa4],#a
+                   [0xA6678],#s
+                   [0xA69D0],#d
+                   [0x969C3, 0x9A99D],#e
+                   [0x9676E, 0x9A995]#r
+                   ]
 def GetKeyCode(key):
     if key == '':#User didn't press a key
         return 0 #All of those are invalid or unknown.

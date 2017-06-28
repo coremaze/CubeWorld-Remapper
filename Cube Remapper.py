@@ -14,6 +14,9 @@ def main():
         2) Left (A)
         3) Backward (S)
         4) Right (D)
+        
+        5) Pick Up (E)
+        6) Interact (R)
         [Enter] to exit''')
 
         hotKey = input()
@@ -24,7 +27,7 @@ def main():
         except:
             print("You what")
         else:
-            if hotKey not in range(1, 5):
+            if hotKey not in range(1, 7):
                 print("Invalid hotkey")
                 
             else:
@@ -36,8 +39,8 @@ def main():
                     print("Invalid key.")
                 else:
                     #Valid remap key
-                    
-                    cCube[hotKeyLocations[hotKey-1]] = keyCode
+                    for loc in hotKeyLocations[hotKey-1]:
+                        cCube[loc] = keyCode
                     hOut = open("Cube_remapped.exe", 'wb')
                     hOut.write(bytes(cCube))
                     hOut.close()
