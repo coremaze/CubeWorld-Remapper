@@ -208,7 +208,13 @@ hotKeyLocations = [[0xA629A],#w
                    [0x9676E, 0x9A995],#r
                    [0x91839],#1
                    [0x918F7],#2
-                   [0x919B5]#3
+                   [0x919B5],#3
+                   [0x96AE9, 0x9A9A5],#t
+                   [0x91A73],#q #fix: Only makes frame light up
+                   [0x95A31, 0x7E10F, 0x916BD, 0x9B3F4, 0x9B37E, 0x95ACB],#M1
+                   [0x9B6B1, 0x9177B, 0x9B3CA],#M2 #fix: only makes frame light up
+                   [0x7E1E6, 0xA60D8],#M3
+                   [0x9A9C0, 0x9A9FD]#Teleport to city
                    
                    ]
 def GetKeyCode(key):
