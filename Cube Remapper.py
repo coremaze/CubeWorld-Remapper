@@ -10,6 +10,8 @@ def main():
         return
     
     cCube = [x for x in cCube]
+    cCube[0x7DB5B] = 0x73 #Extend indirect switch table
+    cCube[0x7DDC4:0x7DDD0] = [0xB]*12 #Set new cases to default
     while True:
         print('''Select key to remap:
         1) Forward (W)
@@ -54,7 +56,7 @@ def main():
                     #A different process needs to occur for
                     #keys handled with a switch jump
                     keyName = input("Remap to: ")
-                    keyCode = GetKeyCode(keyName)
+                    keyCode = GetKeyCode(keyName, False)
                     print(hex(int(keyCode)))
                     if keyCode == 0:
                         print("Invalid key.")
