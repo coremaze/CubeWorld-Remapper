@@ -334,24 +334,28 @@ hotKeyLocations = [[0xA629A],#w
                    [0x9B6B1, 0x9177B, 0x9B3CA],#M2 #Fix
                    [0x7E1E6, 0xA60D8],#M3
                    [0x9A9C0, 0x9A9FD]#Teleport to city
-                   
                    ]
+
 def GetKeyCode(key, switch):
     
     if key == '':#User didn't press a key
         return 0 #All of those are invalid or unknown.
                  #CW's keycode structure seems irregular.
+    if switch:
+        arr = CWSwitchKeyCodes
+    else:
+        arr = CWKeycodes
+    
     #Convert to caps
     key = key.upper()
     
-    if not switch:    
-        for i in range(0, len(CWKeycodes)):
-            if CWKeycodes[i] == key:
-                return i
-        #Key not found
-        return 0
-    else:
-        return
+    for i in range(0, len(arr)):
+        if arr[i] == key:
+            return i
+    #Key not found
+    return 0
+
+
         
 
 

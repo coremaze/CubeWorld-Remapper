@@ -12,8 +12,8 @@ def main():
     cCube = [x for x in cCube]
     cCube[0x7DB5B] = 0x73 #Extend indirect switch table
     cCube[0x7DDC4:0x7DDD0] = [0xB]*12 #Set new cases to default
-    while True:
-        print('''Select key to remap:
+
+    print('''Select action to remap:
         1) Forward (W)
         2) Left (A)
         3) Backward (S)
@@ -37,9 +37,21 @@ def main():
         17) Dodge/Zoon (M3)
 
         18) Teleport to City (?)
-        [Enter] to exit''')
 
-        hotKey = input()
+        19) Select Quick Item (TAB)
+        20) Menu (ESCAPE)
+        21) Inventory (B, I)
+        22) Crafting (C)
+        23) Light (F)
+        24) Special Item (G)
+        25) Map (M)
+        26) Options (O)
+        27) Toggle HP Bars (V)
+        28) Skills (X)
+        29) Help (F1)
+        [Enter] to exit''')
+    while True:
+        hotKey = input('Action # to remap: ')
         if hotKey == '':
             return
         try:
@@ -47,7 +59,7 @@ def main():
         except:
             print("You what")
         else:
-            if hotKey not in range(1, 19):
+            if hotKey not in range(1, 30):
                 print("Invalid hotkey")
                 
             else:
@@ -57,34 +69,43 @@ def main():
                     #keys handled with a switch jump
                     keyName = input("Remap to: ")
                     keyCode = GetKeyCode(keyName, False)
-                    print(hex(int(keyCode)))
+                    #print(hex(int(keyCode)))
                     if keyCode == 0:
                         print("Invalid key.")
                     else:
                         #Valid remap key
                         for loc in hotKeyLocations[hotKey-1]:
                             cCube[loc] = keyCode
+                            
                         hOut = open("Cube_remapped.exe", 'wb')
                         hOut.write(bytes(cCube))
                         hOut.close()
 
                 else:
-                    #TODO: switch jump keys
+                    caseTableAddr = 0x7DD5C
+                    caseTableEnd = 0x7DDD0
+                    defaultCase = 0xB
+                    
+                    keyName = input("Remap to: ")
+                    keyLoc = GetKeyCode(keyName, True)
+                    if keyLoc == 0:
+                        print('Invalid or unsupported key.')
+                    else:
+                        actionCase = hotKey - 19
+                        for i in range(caseTableAddr, caseTableEnd):
+                            if cCube[i] == actionCase:
+                                cCube[i] = defaultCase #Unmap old keys
+                                print('Unmapped')
+                        if cCube[caseTableAddr+keyLoc] != defaultCase:
+                            print('Overwriting an old mapping.')
+                        cCube[caseTableAddr+keyLoc] = actionCase
+                        
+                        hOut = open("Cube_remapped.exe", 'wb')
+                        hOut.write(bytes(cCube))
+                        hOut.close()    
                     #Switch jump is at 0x7DB69
-                    #Switch table is at 0x7DD5C
-                    #Mappings affected:
-                    #Use Quick Item (Tab)
-                    #esc
-                    #inventory (b, i)
-                    #Crafting (c)
-                    #Light (f)
-                    #special item (g)
-                    #map (m)
-                    #options (o)
-                    #toggle hp (v)
-                    #skills (x)
-                    #help (f1)                   
-                    None
+                    #Switch table is at 0x7DD5C                
+                    
                 
                 
 
